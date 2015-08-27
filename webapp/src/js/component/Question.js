@@ -5,7 +5,6 @@ var Reflux = require('reflux');
 
 
 var Question = React.createClass({
-    //mixins : [Reflux.connect(QuizStore, "quizStore")],
     propsType: {
 
         choices: React.PropTypes.array.isRequired,
@@ -14,10 +13,6 @@ var Question = React.createClass({
     componentDidMount: function () {
         console.log("Question Mounted");
     },
-
-
-
-
     render: function () {
         var _q_t = this.props.question_text;
         var choice = this.props.choices.map(function (item, key) {

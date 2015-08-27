@@ -12,6 +12,7 @@ var QuizAction = Reflux.createActions({
     'getResult':{},
     'testAction':{},
     'sendResult':{},
+    'showProgress': {}
 
 
 });

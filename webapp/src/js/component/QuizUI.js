@@ -11,18 +11,47 @@ var $ = require('jquery');
 var ProgressBar = require('../component/QuizProgress');
 var QuizAction = require('../action/actions');
 
+
+/**
+ * normally this should be comming from db
+ * @type {*[]}
+ */
 var choice = [
-    ["A", "B", "C", "D"],
-    ["A", "G", "C", "6"],
-    ["A", "B", "C", "D"],
-    ["A", "ME", "C", "HK"]
+    ["Abuja", "Benue", "Calabar", "Dutse"],
+    ["Henry Fayol", "Gorge Hudson", "James Gosling", "Tim Berkley"],
+    ["jumia.com", "konga.com", "hotel.ng", "wakanow.com"],
+    ["Canada", "London", "Germany", "USA"],
+    ["Facebook", "Whatsapp", "Twitter", "Google+"],
+    ["Social Networking", "Travelling", "News", "E-Commerce"],
+    ["1993", "2001", "2000", "2005"],
+    ["Yahoo", "Twitter", "Google Inc", "Facebook"],
+    ["2001", "1990", "2011", "2012"]
+    ["Mark Zukergberg", "Peter Fayol", "Sim Shagaya", "Larry Page"],
+    ["WHO", "German Soldiers", "Japanese Warriors", "American Military"],
+    ["Recipe", "Programming Language", "Native Language", "See Plus Plus"],
+    ["Larry Tesler", "Thomas Edison", "Nicholas Tesla", "John Bull"]
+
 ];
 
+/**
+ * The questions and answers this
+ * should be comming from DB
+ * @type {*[]}
+ */
 var question_answer = [
-    ["Who is Abdulaziz", "A"],
-    ["Who is React", "B"],
-    ["Who is Peter", "C"],
-    ["Who is Obama", "A"]
+    ["Needle Technology Inc is located at which part of Nigeria", "Abuja"],
+    ["Who is the founder of the java programming language", "James Gosling"],
+    ["Mike Esssien is the CEO of which company", "hotel.ng"],
+    ["Google Inc is a company in which part of the World", "USA"],
+    ["Which platform is the biggest social networking platform in the world", "Facebook"],
+    ["Amazon is known for what", "e-commerce"],
+    ["Nigeria enter into the ICT world full as at which year", "2000"],
+    ["Larry Page and Sergey  Brin are owners of which company", "Google Inc"],
+    ["Which yea did Steve Jobs died", "2011"],
+    ["Konga is an ecommerce site owned by", "Sim Shagaya"],
+    ["Internet was invented by who","American Military"],
+    ["C++ is popularly known as a ", "Programming Language"],
+    ["Who is the founder of copy and paste", "Larry Tesler"]
 ];
 
 var submitbtnstyle = {
@@ -57,13 +86,12 @@ var QuizUI = React.createClass({
     },
 
     isVisible: function () {
-        console.log( " COUNT " + this.state.count);
-        if (this.state.count === 3) {
-            this.setState({count : 0});
+        if (this.state.count === choice.length) {
+            this.setState({count: 0});
             submitbtnstyle['display'] = 'inline-block';
             nextbtnstyle['display'] = 'none';
             //nextbtnstyle.visibility = 'hidden';
-            this.setState({visible:'hidden'});
+            this.setState({visible: 'hidden'});
         } else {
             console.log(submitbtnstyle.display);
         }
@@ -86,6 +114,7 @@ var QuizUI = React.createClass({
         }
     },
     componentDidMount: function () {
+        //QuizAction.showProgress();
     },
 
 
@@ -97,12 +126,18 @@ var QuizUI = React.createClass({
                 <hr/>
                 <Question question_text={question_answer[this.state.count][0]} choices={choice[this.state.count]}/>
                 <br/>
+
                 <h3/>
+
                 <div className="buttons">
                     <a onClick={this.decrement} className="button" style={prevbtnstyle}>Prev</a>
                     <a onClick={this.increment} className="button" style={nextbtnstyle}>Next</a>
                     <a onClick={this.submitQuiz} className="button" style={submitbtnstyle}>Submit</a>
                 </div>
+                <div>
+                    <ProgressBar/>
+                </div>
+
             </div>
 
         )
