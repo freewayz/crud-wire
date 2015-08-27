@@ -22,6 +22,8 @@ var Question = React.createClass({
 
                 <form>
                     {this.props.question_text}
+                    <br/>
+                    <br/>
                     {choice}
                 </form>
 

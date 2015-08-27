@@ -218,6 +218,8 @@ var Question = React.createClass({displayName: "Question",
 
                 React.createElement("form", null, 
                     this.props.question_text, 
+                    React.createElement("br", null), 
+                    React.createElement("br", null), 
                     choice
                 )
 
